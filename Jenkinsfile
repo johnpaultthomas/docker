@@ -13,6 +13,7 @@ pipeline {
             post {
                 success {
                     archiveArtifacts 'hostname.txt' 
+                    sh 'hostname' 
                 }
             }
         }
