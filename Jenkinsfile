@@ -1,5 +1,6 @@
 pipeline {
     agent none
+    stages {
         stage('Deliver') { 
             agent {
                 docker {
@@ -7,13 +8,16 @@ pipeline {
                 }
             }
             steps {
-                sh 'sources/deploy.sh' 
+                sh 'hostname;hostname>>hostname.txt;echo "-------";ls' 
             }  
             post {
                 success {
-                    archiveArtifacts 'stackout.txt' 
+                    archiveArtifacts 'hostname.txt' 
                 }
             }
         }
     }
+}
+
+
 
