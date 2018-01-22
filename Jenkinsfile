@@ -1,19 +1,11 @@
-pipeline {
-    agent none
-    stages {
-        stage('Build') {
+node {
+    def app
+    stage('Build image') {
+        /* This builds the actual image; synonymous to
+         * docker build on the command line */
 
-	agent {
-	    dockerfile {
-        	filename 'dockerfile'
-	        label 'johnpaultthomas/get-started'
-	        additionalBuildArgs  '--build-arg version=1.0.2'
-    	    }
-	   steps {
-        	sh 'hostname'
-	   }
-	}
-	}
-}
+        app = docker.build("getintodevops/hellonode")
+    }
+
 }
 
