@@ -1,0 +1,4 @@
+rebuild image
+test image
+test stack
+deploy stack

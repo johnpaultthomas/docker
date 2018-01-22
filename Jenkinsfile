@@ -1,24 +1,12 @@
 pipeline {
     agent none
     stages {
-        stage('Deliver') { 
-            agent {
-                docker {
-                    image 'johnpaultthomas/get-started:part2' 
-                }
-            }
+        stage('Build') {
+            agent none
             steps {
-                sh 'hostname;hostname>>hostname.txt;echo "-------";ls' 
-            }  
-            post {
-                success {
-                    archiveArtifacts 'hostname.txt' 
-                    sh 'hostname' 
-                }
+                sh 'build.sh'
             }
         }
     }
 }
-
-
 
